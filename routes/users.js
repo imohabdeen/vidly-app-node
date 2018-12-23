@@ -16,6 +16,7 @@ res.send(user);
 });
 
 
+// Register
 router.post('/', async (req, res) => {
     const {
         error

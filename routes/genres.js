@@ -1,3 +1,4 @@
+const admin = require('../middleware/admin')
 const auth = require('../middleware/auth')
 const {Genre, validate} = require('../models/genre');
 const mongoose = require('mongoose');

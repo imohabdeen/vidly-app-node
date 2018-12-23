@@ -5,7 +5,7 @@ const config = require('config');
 function auth(req , res, next){
     const token = req.header('x-auth-token');
 
-    if(!token) res.status(401).send('Access Denied not valid token');
+    if(!token) return res.status(401).send('Access Denied not valid token');
     try {
         const decodedPayload = jwt.verify(token,config.get('jwtPrivateToken'));
         req.user = decodedPayload;
@@ -15,3 +15,5 @@ function auth(req , res, next){
     }
 
 }
+
+module.exports = auth;
