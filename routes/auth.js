@@ -24,18 +24,18 @@ router.post('/', async (req, res) => {
     if(!validPassword) return res.status(400).send('Invalid email or password.');
 
     // payload, privatekey (should be saved in environment variables)
-    const token = jwt.sign({_id:user._id},config.get('jwtPrivateKey'))
+    //const token = jwt.sign({_id:user._id},config.get('jwtPrivateKey'))
     const token = user.generateAuthToken();
     res.send(token);
 });
 
 
-function validate(req){
-    const schema ={
-        email:Joi.string().minlength(5).maxlength(255).required().email(),
-        password:Joi.string().minlength(5).maxlength(255).required(), //Before hashing
-    };  
-    return Joi.validate(user,schema);
-}
+// function validate(req){
+//     const schema ={
+//         email:Joi.string().minlength(5).maxlength(255).required().email(),
+//         password:Joi.string().minlength(5).maxlength(255).required(), //Before hashing
+//     };  
+//     return Joi.validate(user,schema);
+// };
 
 module.exports = router;

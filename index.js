@@ -1,4 +1,4 @@
-
+//const jwt = require('jsonwebtoken');
 const error = require('./middleware/error')
 const config = require('config');
 const mongoose = require('mongoose');
@@ -10,10 +10,13 @@ const auth = require('./routes/auth');
 const express = require('express');
 const app = express();
 
-if(!config.get('jwtPrivateKey')){
-  console.error('Fetal Error');
-  process.exit(1);
-}
+if(config.has('jwtPrivateKey')){
+  if(!config.get('jwtPrivateKey')){
+    //console.log(process.env.vidly_jwtPrivateKey);
+    console.error('Fetal Error - ');
+    process.exit(1);
+  }
+};
 
 
 mongoose.connect('mongodb://localhost/vidly')

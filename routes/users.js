@@ -1,6 +1,6 @@
 
 const auth = require('../middleware/auth');
-const jwt = require('jwt');
+const jwt = require('jsonwebtoken');
 const config = require('config');
 const _ = require('lodash');
 const {User, validate } = require('../models/user');
@@ -16,7 +16,7 @@ res.send(user);
 });
 
 
-// Register
+// Register - Add New User
 router.post('/', async (req, res) => {
     const {
         error
